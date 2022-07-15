@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const timeStampController = require("./controllers/timeStampControllers.js");
 const parserController = require("./controllers/parserControllers.js");
+const urlController = require("./controllers/urlController.js");
 
 /*
 
@@ -32,6 +33,14 @@ GET Request Header parser
 
 */
 
-router.get("/api/whoami", parserController.tsTest);
+router.get("/api/whoami", parserController.whoami);
+
+/* 
+
+GET & PUT URL Shortener Controller
+
+*/
+
+router.route("/api/shorturl", urlController.tsTest);
 
 module.exports = router;
