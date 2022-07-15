@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const apiController = require("./apiController.js");
+const timeStampController = require("./controllers/timeStampControllers.js");
 
 /*
 
@@ -22,8 +22,14 @@ GET Timestamp Microservices
 
 */
 
-router.get("/api/hello", apiController.tsTest);
-router.get("/api", apiController.currentDate);
-router.get("/api/:date", apiController.dateParser);
+router.get("/api/hello", timeStampController.tsTest);
+router.get("/api", timeStampController.currentDate);
+router.get("/api/:date", timeStampController.dateParser);
+
+/*
+
+GET 
+
+*/
 
 module.exports = router;
