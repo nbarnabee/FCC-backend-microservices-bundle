@@ -1,7 +1,5 @@
-exports.tsTest = async (req, res) => {
+exports.whoami = async (req, res) => {
   try {
-    console.log(req.headers);
-    // need ipaddress, preferred language, software
     let reply = {
       ipaddress: req.ip,
       language: req.get("accept-language"),
