@@ -1,0 +1,34 @@
+{
+  "name": "backend-microservices-bundle",
+  "version": "1.0.0",
+  "description": "One project to combine the microservice APIs required to finish FCC's backend course",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nbarnabeeFreeCodeCamp/backend-microservices-bundle.git"
+  },
+  "keywords": [
+    "fcc",
+    "api",
+    "microservice"
+  ],
+  "author": "Nicole Barnabee",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nbarnabeeFreeCodeCamp/backend-microservices-bundle/issues"
+  },
+  "homepage": "https://github.com/nbarnabeeFreeCodeCamp/backend-microservices-bundle#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
