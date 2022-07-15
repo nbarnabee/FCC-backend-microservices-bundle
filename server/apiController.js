@@ -1,5 +1,3 @@
-const { DateTime } = require("luxon");
-
 exports.homepage = async (req, res) => {
   try {
     res.sendFile(__dirname + "../index.html");
@@ -33,19 +31,18 @@ exports.dateParser = async (req, res) => {
   try {
     let input = req.params.date;
     let date;
-    if (input.includes("-")) {
-      date = DateTime.fromISO(input, { zone: "utc" });
+    if (isNaN(Number(input))) {
+      date = new Date(input).toGMTString();
     } else {
-      date = DateTime.fromMillis(Number(input), { zone: "utc" });
+      date = new Date(Number(input)).toGMTString();
     }
-    if (date == null) {
+    if (date == null || date == NaN) {
       res.json({ error: "Invalid Date" });
     } else {
-      const reply = {
+      res.json({
         unix: Number(Date.parse(date)),
-        utc: date.toHTTP(),
-      };
-      res.json(reply);
+        utc: date,
+      });
     }
   } catch (error) {
     res.json({ error: "Invalid Date" });
