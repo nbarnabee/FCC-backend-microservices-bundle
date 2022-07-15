@@ -1,5 +1,3 @@
-const { DateTime } = require("luxon");
-
 exports.homepage = async (req, res) => {
   try {
     res.sendFile(__dirname + "../index.html");
@@ -18,10 +16,10 @@ exports.tsTest = async (req, res) => {
 
 exports.currentDate = async (req, res) => {
   try {
-    const now = DateTime.utc();
+    const now = new Date().toGMTString();
     const reply = {
       unix: Number(Date.parse(now)),
-      utc: now.toHTTP(),
+      utc: now,
     };
     res.json(reply);
   } catch (error) {
@@ -38,7 +36,7 @@ exports.dateParser = async (req, res) => {
     } else {
       date = new Date(Number(input)).toGMTString();
     }
-    if (date == null || date == NaN) {
+    if (date == null || date == NaN || date == "Invalid Date") {
       res.json({ error: "Invalid Date" });
     } else {
       res.json({
