@@ -41,6 +41,7 @@ GET & PUT URL Shortener Controller
 
 */
 
-router.route("/api/shorturl", urlController.tsTest);
+router.post("/api/shorturl", urlController.urlShorten);
+router.get("/api/shorturl/:id", urlController.urlRedirect);
 
 module.exports = router;
