@@ -6,19 +6,23 @@ const { rmSync } = require("node:fs");
 exports.urlShorten = async (req, res) => {
   try {
     const url = new URL(req.body.url);
-    dns.lookup(url.hostname, () => {
-      let random = Math.random()
-        .toString(36)
-        .replace(/[^\w]+/g, "");
-      let entry = new ShortenedURL({
-        original_url: req.body.url,
-        short_url: random,
-      });
-      entry.save();
-      res.json({
-        original_url: entry.original_url,
-        short_url: entry.short_url,
-      });
+    dns.lookup(url.hostname, (err) => {
+      if (err) {
+        res.json({ error: "invalid url" });
+      } else {
+        let random = Math.random()
+          .toString(36)
+          .replace(/[^\w]+/g, "");
+        let entry = new ShortenedURL({
+          original_url: req.body.url,
+          short_url: random,
+        });
+        entry.save();
+        res.json({
+          original_url: entry.original_url,
+          short_url: entry.short_url,
+        });
+      }
     });
   } catch (error) {
     res.status(500).send({ error: "invalid url" || "Error Occurred" });
