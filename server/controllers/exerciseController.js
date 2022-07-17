@@ -55,7 +55,6 @@ exports.postExercise = async (req, res) => {
     if (date == "Invalid Date") {
       date = new Date();
     }
-    console.log(date);
     const exercise = {
       description: req.body.description,
       duration: req.body.duration,
