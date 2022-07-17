@@ -14,7 +14,7 @@ GET Homepage
 
 router.get("/", async (req, res) => {
   try {
-    res.sendFile(__dirname + "/index.html");
+    res.sendFile(require("path").resolve("./") + "/index.html");
   } catch (error) {
     res.status(500).send({ message: error.message || "Error Occurred" });
   }
