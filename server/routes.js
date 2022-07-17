@@ -80,7 +80,7 @@ router.get("/api/users/:id/logs", exerciseController.getLogs);
 
 const multer = require("multer");
 router.post(
-  "/api/fileupload",
+  "/api/fileanalyse",
   multer().single("upfile"),
   uploadController.uploadFile
 );
