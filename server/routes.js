@@ -3,7 +3,7 @@ const router = express.Router();
 const timeStampController = require("./controllers/timeStampController.js");
 const parserController = require("./controllers/parserController.js");
 const urlController = require("./controllers/urlController.js");
-const exerciseController = require("./controllers/exerciseController");
+const exerciseController = require("./controllers/exerciseController.js");
 const uploadController = require("./controllers/uploadController.js");
 
 /*
@@ -69,10 +69,10 @@ router.get("/api/users/:id/logs", exerciseController.getLogs);
 
 /*
 
-// POST to /api/upfile
+// POST to /api/fileupload
 
 */
 
-router.post("/api/upfile", uploadController.uploadFile);
+router.post("/api/fileupload", uploadController.uploadFile);
 
 module.exports = router;
