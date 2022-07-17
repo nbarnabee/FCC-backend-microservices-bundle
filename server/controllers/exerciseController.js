@@ -86,8 +86,12 @@ exports.getLogs = async (req, res) => {
     let log = [];
     let startDate = new Date(req.query.from);
     let endDate = new Date(req.query.to);
-    if (startDate == "Invalid Date") startDate = new Date(1970 - 01 - 01);
-    if (endDate == "Invalid Date") endDate = new Date();
+    if (startDate == "Invalid Date") {
+      startDate = new Date(1970 - 01 - 01);
+    }
+    if (endDate == "Invalid Date") {
+      endDate = new Date();
+    }
     user.log.forEach(function (element) {
       if (element.date >= startDate && element.date <= endDate)
         log.push({
@@ -96,7 +100,9 @@ exports.getLogs = async (req, res) => {
           date: element.date.toDateString(),
         });
     });
-    if (req.query.limit) log.length = req.query.limit;
+    if (req.query.limit) {
+      log.length = req.query.limit;
+    }
     let count = log.length;
     res.json({
       _id: user._id,
