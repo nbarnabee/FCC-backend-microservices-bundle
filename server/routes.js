@@ -73,11 +73,6 @@ router.get("/api/users/:id/logs", exerciseController.getLogs);
 
 */
 
-// router.post("/api/fileupload", uploadController.uploadFile);
-
-// FCC didn't seem to like fileUpload, so I'll try with multer
-// This passes the request through the middleware before moving it along to my function
-
 const multer = require("multer");
 router.post(
   "/api/fileanalyse",
