@@ -1,5 +1,5 @@
 require("../models/database");
-const User = require("../models/Exercise.js");
+const User = require("../models/User.js");
 
 /*
 
@@ -51,10 +51,11 @@ Adding an exercise to a user
 exports.postExercise = async (req, res) => {
   try {
     let user = await User.findById(req.params.id);
-    let date = new Date(req.body.date).toDateString();
-    if (!date || date === "Invalid Date") {
-      date = new Date().toDateString();
+    let date = new Date(req.body.date);
+    if (date == "Invalid Date") {
+      date = new Date();
     }
+    console.log(date);
     const exercise = {
       description: req.body.description,
       duration: req.body.duration,
@@ -65,7 +66,7 @@ exports.postExercise = async (req, res) => {
     res.json({
       _id: updatedUser._id,
       username: updatedUser.username,
-      date: date,
+      date: date.toDateString(),
       duration: Number(req.body.duration),
       description: req.body.description,
     });
@@ -83,18 +84,26 @@ GET user logs by id
 exports.getLogs = async (req, res) => {
   try {
     let user = await User.findById(req.params.id);
+    let log = [];
     let startDate = new Date(req.query.from);
     let endDate = new Date(req.query.to);
-    let limit = req.query.limit;
-    // let filteredLog = filterLog(user.log, startDate, endDate, limit)
-
-    console.log(startDate, endDate);
-    let count = user.log.length;
+    if (startDate == "Invalid Date") startDate = new Date(1970 - 01 - 01);
+    if (endDate == "Invalid Date") endDate = new Date();
+    user.log.forEach(function (element) {
+      if (element.date >= startDate && element.date <= endDate)
+        log.push({
+          description: element.description,
+          duration: Number(element.duration),
+          date: element.date.toDateString(),
+        });
+    });
+    if (req.query.limit) log.length = req.query.limit;
+    let count = log.length;
     res.json({
       _id: user._id,
       username: user.username,
       count: count,
-      log: user.log,
+      log: log,
     });
   } catch (error) {
     res.status(500).send(error);
