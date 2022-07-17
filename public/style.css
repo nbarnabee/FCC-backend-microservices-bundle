@@ -23,11 +23,11 @@ section:nth-of-type(4) {
   background-color: hsl(221, 68%, 93%);
 }
 
-/* section:last-of-type {
+section:last-of-type {
   background-color: hsl(152, 68%, 96%);
-} */
+}
 
-.form {
+form {
   background-color: hsl(216, 33%, 97%);
   width: 25%;
   display: flex;
@@ -36,6 +36,10 @@ section:nth-of-type(4) {
   padding-inline: 0.5rem;
   padding-bottom: 0.5rem;
   margin-bottom: 0.5rem;
+}
+
+section:last-of-type > form {
+  background-color: white;
 }
 
 label {

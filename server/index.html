@@ -15,8 +15,8 @@
       href="https://www.freecodecamp.org/learn/back-end-development-and-apis">Back End Development and APIs</a>
     certification provided by <a href="https://www.freecodecamp.org">FreeCodeCamp</a></p>
 
-  <section>
-    <h2>TimeStamp</h2>
+  <section aria-labelledby="timestamp">
+    <h2 id="timestamp">TimeStamp</h2>
     <p><a
         href="https://www.freecodecamp.org/learn/back-end-development-and-apis/back-end-development-and-apis-projects/timestamp-microservice">Project
         Details</a></p>
@@ -35,8 +35,8 @@
     </div>
   </section>
 
-  <section>
-    <h2>Request Header Parser</h2>
+  <section aria-labelledby="header-parser">
+    <h2 id="header-parser">Request Header Parser</h2>
     <p><a
         href="https://www.freecodecamp.org/learn/back-end-development-and-apis/back-end-development-and-apis-projects/request-header-parser-microservice">Project
         Details</a></p>
@@ -54,19 +54,16 @@
     </div>
 
   </section>
-  <section>
-    <h2>URL Shortener</h2>
+  <section aria-labelledby="url-shortener">
+    <h2 id="url-shortener">URL Shortener</h2>
 
     <p><a
         href="https://www.freecodecamp.org/learn/back-end-development-and-apis/back-end-development-and-apis-projects/url-shortener-microservice">Project
         Details</a></p>
     <form action="api/shorturl" method="POST">
-      <fieldset>
-        <legend>URL Shortener</legend>
-        <label for="url_input">URL:</label>
-        <input id="url_input" type="text" name="url" placeholder="https://www.freecodecamp.org/" />
-        <input type="submit" value="POST URL" />
-      </fieldset>
+      <label for="url_input">URL:</label>
+      <input id="url_input" type="text" name="url" placeholder="https://www.freecodecamp.org/" />
+      <button type="submit">Shorten </button>
     </form>
 
     <div class="container">
@@ -87,8 +84,8 @@
     </div>
   </section>
 
-  <section>
-    <h2>Exercise Tracker</h2>
+  <section aria-labelledby="exercise-tracker">
+    <h2 id="exercise-tracker">Exercise Tracker</h2>
     <p><a
         href="https://www.freecodecamp.org/learn/back-end-development-and-apis/back-end-development-and-apis-projects/exercise-tracker">Project
         Details</a></p>
@@ -97,6 +94,8 @@
     <p>Use the form below to add a new user to the database. Use the second form to add exercises to the user by id.</p>
     <p>/api/users to access a list of all users</p>
     <p>/api/users/:id/logs to access a particular user's logs</p>
+    <p>Accepts <code>from</code>, <code>to</code>, and <code>limit</code> queries.</p>
+    <p>E.g., <code>/api/users/:id/logs?from=2022-06-12&to=2022-07-15&limit=3</code></p>
 
     <form class="form new-user-form" action="/api/users" method="POST">
       <h3>Create New User</h3>
@@ -118,6 +117,19 @@
       <small>*Optional (will default to today's date)</small>
       <button type="button" id="exercise-btn">Submit</button>
     </form>
+  </section>
+
+  <section aria-labelledby="file-metadata">
+    <h2 id="file-metadata">File Metadata Provider</h2>
+    <p><a
+        href="https://www.freecodecamp.org/learn/back-end-development-and-apis/back-end-development-and-apis-projects/file-metadata-microservice">Project
+        Details</a></p>
+    <form action="/api/fileupload" method="POST" enctype="multipart/form-data">
+      <label for="upfile">Please select a file to upload</label>
+      <input type="file" name="upfile" id="upfile">
+      <button>Upload</button>
+    </form>
+
   </section>
 
   <script src="main.js"></script>
